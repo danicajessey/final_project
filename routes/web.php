@@ -1,22 +1,32 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BuyController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\KaryawanController;
 
 
-Route::get("/", [KaryawanController::class,'show'])->name('show');
+Route::get("/", [AdminController::class,'show'])->name('show');
 
-Route::get("/create", [KaryawanController::class,'create'])->name('create');
+Route::get("/login", [LoginController::class,'login'])->name('login');
 
-Route::post("/store", [KaryawanController::class,'store'])->name('store');
+Route::get("/create", [AdminController::class,'create'])->name('create');
 
-Route::get('/edit/{id}', [KaryawanController::class,'edit'])->name('edit');
+Route::get("/create2/{id}", [BuyController::class,'create2'])->name('create2');
 
-Route::get('/edit2/{id}', [KaryawanController::class,'edit2'])->name('edit2');
+Route::post("/store", [LoginController::class,'store'])->name('store');
 
-Route::patch('/update/{id}', [KaryawanController::class,'update'])->name('update');
+Route::post("/store2", [AdminController::class,'store2'])->name('store2');
 
-Route::put('update2/{id}', [KaryawanController::class,'update2'])->name('update2');
+Route::post("/store3", [BuyController::class,'store3'])->name('store3');
 
-Route::delete('/delete/{id}', [KaryawanController::class,'delete'])->name('delete');
+Route::get('/edit/{id}', [AdminController::class,'edit'])->name('edit');
+
+Route::get('/edit2/{id}', [AdminController::class,'edit2'])->name('edit2');
+
+Route::patch('/update/{id}', [AdminController::class,'update'])->name('update');
+
+Route::put('/update2/{id}', [AdminController::class,'update2'])->name('update2');
+
+Route::delete('/delete/{id}', [AdminController::class,'delete'])->name('delete');
 

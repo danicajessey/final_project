@@ -20,27 +20,31 @@
                 <a class="nav-link active" aria-current="page" href="/">Home</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="/login">login</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="/create">Create</a>
               </li>
           </div>
         </div>
       </nav>
-    <h1 class="text-center">View Data Karyawan</h1>
+    <h1 class="text-center">View barang</h1>
     <div class="d-flex flex-row justify-content-center gap-5 row row-cols-3 row-cols-md-4 g-2">
-        @foreach ($karyawan as $b)
-        <div class="col">
-        <div class="card" >
+        @foreach ($admin as $b)
+        <div class="card" style="width: 18rem">
                 <img src="{{asset('/storage/image/'. $b->image)}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <p class="card-text">Name: {{$b->nama}}</p>
-                  <p class="card-text">Umur: {{$b->umur}}</p>
-                  <p class="card-text">Alamat: {{$b->alamat}}</p>
-                  <p class="card-text">Nomor telpon: {{$b->no_telp}}</p>
+                  <p class="card-title">Nama barang: {{$b->nama}}</p>
+                  <p class="card-text">Harga barang: {{$b->harga}}</p>
+                  <p class="card-text">qty: {{$b->qty}}</p>
+                  <p class="card-text">Kategori: {{$b->kategori->kategori_name}}</p>
                   <a href="{{route('edit', $b->id)}}" class="btn btn-success">Edit</a>
 
                   <a href="{{route('edit2', $b->id)}}" class="btn btn-success">Edit Foto</a>
                   <br>
-
+                  <br>
+                  <a href="{{route('create2', $b->id)}}" class="btn btn-success">Masukkan ke keranjang</a>
+                  <br>
                   <form action="{{route('delete', $b->id)}}" method="POST">
                       @csrf
                       @method('delete')
@@ -48,7 +52,6 @@
                       <button type="submit" class="btn btn-danger">Delete</button>
                   </form>
                 </div>
-        </div>
         </div>
         @endforeach
     </div>

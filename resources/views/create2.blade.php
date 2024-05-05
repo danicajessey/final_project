@@ -25,23 +25,26 @@
       </div>
     </div>
   </nav>
-
 <body>
-      <div class="p-5">
-        <h1 class="text-center">Edit foto barang</h1>
-        <br>
-        <form action="{{route('update2', $admin->id) }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            @method('PUT')
-            <input type="File" class="form-control" id="" name="image">
-            @error('image')
-                <div class="alert alert-danger" role="alert">{{$message}}</div>
-            @enderror
-            <br>
-            <button type="submit" class="btn btn-success">Update foto</button>
-        </form>
+    @foreach ($buy as $b)
+    <div class="card" style="width: 18rem">
+            <img src="{{asset('/storage/image/'. $b->image)}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-title">Nama barang: {{$b->nama}}</p>
+              <p class="card-text">Harga barang: {{$b->harga}}</p>
+              <p class="card-text">qty: {{$b->qty}}</p>
+              <p class="card-text">Kategori: {{$b->kategori->kategori_name}}</p>
 
+              <form action="{{route('delete', $b->id)}}" method="POST">
+                  @csrf
+                  @method('delete')
+                  <br>
+                  <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+            </div>
     </div>
+    @endforeach
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

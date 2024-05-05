@@ -25,22 +25,40 @@
       </div>
     </div>
   </nav>
-
 <body>
       <div class="p-5">
-        <h1 class="text-center">Edit foto barang</h1>
-        <br>
-        <form action="{{route('update2', $admin->id) }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            @method('PUT')
-            <input type="File" class="form-control" id="" name="image">
-            @error('image')
-                <div class="alert alert-danger" role="alert">{{$message}}</div>
-            @enderror
-            <br>
-            <button type="submit" class="btn btn-success">Update foto</button>
+        <h1 class="text-center">Sign up</h1>
+        <form action="{{route('store')}}" method="POST" enctype="multipart/form-data">
+          @csrf
+          <div class="mb-3">
+          <div class="mb-3">
+            <label for="" class="form-label">Nama</label>
+            <input value="{{old('nama')}}"type="text" class="form-control" id="" name="nama" placeholder="Masukkan nama Anda">
+          </div>
+          @error('nama')
+            <div class="alert alert-danger" role="alert">{{$message}}</div>
+          @enderror
+          <div class="mb-3">
+            <label for="" class="form-label">Role</label>
+        </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="role" id="" value="Admin" checked>
+            <label class="form-check-label" for="Admin">
+              Admin
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="role" id="" value="User">
+            <label class="form-check-label" for="User">
+              User
+            </label>
+          </div>
+          @error('role')
+            <div class="alert alert-danger" role="alert">{{$message}}</div>
+          @enderror
+          <br>
+      <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

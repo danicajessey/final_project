@@ -27,26 +27,22 @@
   </nav>
 <body>
       <div class="p-5">
-        <h1 class="text-center">Edit data karyawan baru</h1>
-        <form action="{{route('update', $karyawan->id)}}" method="POST" enctype="multipart/form-data">
+        <h1 class="text-center">Edit barang</h1>
+        <form action="{{route('update', $admin->id)}}" method="POST" enctype="multipart/form-data">
           @csrf
           @method('patch')
-          <div class="mb-3">
-            <label for="" class="form-label">Nama</label>
-            <input value="{{$karyawan->nama}}"type="text" class="form-control" id="" name="nama">
-          </div>
-          <div class="mb-3">
-            <label for="" class="form-label">Umur</label>
-            <input value="{{$karyawan->umur}}"type="text" class="form-control" id="" name="umur">
-          </div>
-          <div class="mb-3">
-            <label for="" class="form-label">Alamat</label>
-            <input value="{{$karyawan->alamat}}"type="text" class="form-control" id="" name="alamat">
-          </div>
-          <div class="mb-3">
-              <label for="" class="form-label">Nomor telpon</label>
-              <input value="{{$karyawan->no_telp}}" type="text" class="form-control" id="" name="no_telp">
-          </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Nama Barang</label>
+                <input value="{{$admin->nama}}"type="text" class="form-control" id="" name="nama" placeholder="Masukkan nama barang">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Harga Barang</label>
+                <input value="{{$admin->harga}}" type="number" class="form-control" id="" name="harga" placeholder="Masukkan harga barang">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Jumlah Barang</label>
+                <input value="{{$admin->qty}}" type="number" class="form-control" id="" name="qty" placeholder="Masukkan jumlah barang">
+            </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

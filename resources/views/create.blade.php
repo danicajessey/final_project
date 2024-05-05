@@ -27,36 +27,29 @@
   </nav>
 <body>
       <div class="p-5">
-        <h1 class="text-center">Sign up karyawan baru</h1>
-        <form action="{{route('store')}}" method="POST" enctype="multipart/form-data">
+        <h1 class="text-center">Create barang</h1>
+        <form action="{{route('store2')}}" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="mb-3">
           <div class="mb-3">
-            <label for="" class="form-label">Nama</label>
-            <input value="{{old('nama')}}"type="text" class="form-control" id="" name="nama" placeholder="Masukkan nama karyawan">
+            <label for="" class="form-label">Nama Barang</label>
+            <input value="{{old('nama')}}"type="text" class="form-control" id="" name="nama" placeholder="Masukkan nama barang">
           </div>
           @error('nama')
             <div class="alert alert-danger" role="alert">{{$message}}</div>
           @enderror
           <div class="mb-3">
-            <label for="" class="form-label">Umur</label>
-            <input value="{{old('umur')}}"type="number" class="form-control" id="" name="umur" placeholder="Masukkan umur karyawan">
+            <label for="" class="form-label">Harga Barang</label>
+            <input value="{{old('harga')}}" type="number" class="form-control" id="" name="harga" placeholder="Masukkan harga barang">
           </div>
-          @error('umur')
+          @error('harga')
             <div class="alert alert-danger" role="alert">{{$message}}</div>
           @enderror
           <div class="mb-3">
-            <label for="" class="form-label">Alamat</label>
-            <input value="{{old('alamat')}}"type="text" class="form-control" id="" name="alamat" placeholder="Masukkan alamat karyawan">
+              <label for="" class="form-label">Jumlah Barang</label>
+              <input value="{{old('qty')}}" type="number" class="form-control" id="" name="qty" placeholder="Masukkan jumlah barang">
           </div>
-          @error('alamat')
-            <div class="alert alert-danger" role="alert">{{$message}}</div>
-          @enderror
-          <div class="mb-3">
-              <label for="" class="form-label">Nomor telpon</label>
-              <input value="{{old('no_telp')}}" type="text" class="form-control" id="" name="no_telp" placeholder="08xxxxxxx...">
-          </div>
-          @error('no_telp')
+          @error('qty')
             <div class="alert alert-danger" role="alert">{{$message}}</div>
           @enderror
         <div class="mb-3">
@@ -66,9 +59,18 @@
         @error('image')
         <div class="alert alert-danger" role="alert">{{$message}}</div>
        @enderror
+       <div class="mb-3">
+        <label for="" class="form-label">Kategori Barang</label>
+        <select class="form-select" aria-label="Default select example" name="kategori_name">
+            @foreach ($kategoris as $c)
+                <option value="{{$c->id}}">{{$c->kategori_name}}</option>
+            @endforeach
+        </select>
+      </div>
       <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
